@@ -1,0 +1,52 @@
+# General
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Virtual Environment
+venv/
+env/
+.myenv/
+
+# Django
+db.sqlite3
+/media/
+/staticfiles/
+
+# Secret Key
+*.env
+
+# Logs
+*.log
+
+# MongoDB
+*.lock
+*.ldb
+data/
+
+# AI/ML Models and Outputs
+*.h5
+*.ckpt
+*.pkl
+*.pt
+*.onnx
+*.joblib
+notebooks/__pycache__/
+notebooks/*.ipynb_checkpoints/
+
+# Node.js (if using npm for frontend dependencies)
+node_modules/
+npm-debug.log*
+
+# IDE and Editor Config
+.idea/
+.vscode/
+*.iml
+
+# Deployment
+*.pem
+.env
