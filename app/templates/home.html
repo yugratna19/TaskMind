@@ -1,15 +1,11 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskMind</title>
+{% extends 'base.html' %}
 
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-    <h1>Welcome to TaskMind</h1>
-    <p>Your productivity companion</p>
-</body>
-</html>
+{% block title %}Welcome to TaskMind{% endblock %}
+
+{% block content %}
+    <section>
+        <h2>Your productivity companion</h2>
+        <p>TaskMind helps you stay organized and focused on what matters most. Plan your day, track tasks, and achieve your goals!</p>
+        <a href="#" class="btn-primary">Get Started</a>
+    </section>
+{% endblock %}
