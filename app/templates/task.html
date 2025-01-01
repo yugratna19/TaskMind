@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Task List - TaskMind{% endblock %}
+
+{% block content %}
+    <section>
+        <h2>Your Tasks</h2>
+        <ul>
+            {% for task in tasks %}
+                <li>
+                    <strong>{{ task.title }}</strong><br>
+                    {{ task.description }}<br>
+                    Due: {{ task.due_date }}
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
