@@ -11,7 +11,7 @@ def task_list (request):
         {"title": "Study Django", "description": "Work on the TaskMind project", "due_date": "2025-01-02"},
         {"title": "Workout", "description": "Follow workout routine", "due_date": "2025-01-02"},
     ]
-    return render(request, 'task.html',{'tasks':tasks}) 
+    return render(request, 'tasks.html',{'tasks':tasks}) 
 
 def add_task(request):
     if request.method == 'Post':
