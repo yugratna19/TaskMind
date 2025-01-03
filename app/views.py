@@ -31,3 +31,6 @@ def edit_task(request,id):
         form = TaskForm(instance= task)
     return render (request, 'edit_task.html',{'form': form})
 
+def task_details (request,id):
+    task = get_object_or_404(Task,id = id)
+    return render(request, 'task_detail.html',{'task':task})
