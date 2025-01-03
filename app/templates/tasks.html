@@ -3,18 +3,20 @@
 {% block title %}Task List - TaskMind{% endblock %}
 
 {% block content %}
-    <section>
-        <h2>Your Tasks</h2>
-        <ul>
-            {% for task in tasks %}
-                <li>
-                    <a href="{% url 'edit_task' task.id %}">{{ task.title }}</a>
-                    <p>{{ task.description }}</p>
-                </li>
-            {% endfor %}
-        </ul>
-        
-    </section>
-    <a href="{% url 'home' %}" class="btn-secondary">Back to Home</a>
-    <a href="{% url 'add_task' %}" class="btn-primary">Add Task</a>
+<section>
+    <h2>Your Tasks</h2>
+    <ul>
+        {% for task in tasks %}
+        <tr>
+            <td><a href="{% url 'task_details' task.id %}">{{ task.title }}</a></td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.due_date }}</td>
+        </tr>
+        {% endfor %}
+
+    </ul>
+
+</section>
+<a href="{% url 'home' %}" class="btn-secondary">Back to Home</a>
+<a href="{% url 'add_task' %}" class="btn-primary">Add Task</a>
 {% endblock %}
