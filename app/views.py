@@ -33,4 +33,4 @@ def edit_task(request,id):
 
 def task_details (request,id):
     task = get_object_or_404(Task,id = id)
-    return render(request, 'task_detail.html',{'task':task})
+    return render(request, 'task_details.html',{'task':task})
