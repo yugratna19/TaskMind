@@ -7,4 +7,5 @@ urlpatterns = [
     path('tasks/add', views.add_task, name = 'add_task'), # Add Tasks
     path('tasks/edit/<int:id>', views.edit_task, name = 'edit_task'), # Edit Tasks
     path('tasks/details/<int:id>', views.task_details, name = 'task_details'), # Details in a Task
+    path('tasks/delete/<int:id>', views.delete_task, name = 'delete_task'), # Delete a Task
 ]
