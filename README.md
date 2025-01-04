@@ -30,19 +30,16 @@ taskmind/                    # Root project folder
 │   ├── templates/           # HTML templates for frontend
 │   │   ├── base.html        # Base template
 │   │   └── home.html        # Homepage template
-│   ├── static/              # Static assets (CSS, JS, images)
-│   │   ├── css/             # Stylesheets
-│   │   ├── js/              # JavaScript files
-│   │   └── images/          # Images
 ├── ai_models/               # AI and ML models and related files
 │   ├── notebooks/           # Notebooks for model training (Google Colab)
 │   │   └── chatbot_training.ipynb
 │   ├── models/              # Folder for trained models (e.g., .h5, .pkl)
-├── static/                  # Global static folder
-│   └── ...                  # Any other shared static assets
-├── templates/               # Global HTML templates
-│   └── ...                  # Shared templates if needed across multiple apps
-├── db/                      # MongoDB data files (ignored by Git)
+├──  static/                 # Static assets (CSS, JS, images)
+│   ├── app /              
+│   │   ├── css/             # Stylesheets
+│   │   ├── js/              # JavaScript files
+│   │   └── images/          # Images
+├── db/                      # DB data files (ignored by Git)
 └── tests/                   # Unit and integration tests
     ├── test_views.py
     ├── test_models.py
