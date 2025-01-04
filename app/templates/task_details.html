@@ -8,7 +8,8 @@
             <h5 class="card-title">{{ task.title }}</h5>
             <p class="card-text"><strong>Description:</strong> {{ task.description }}</p>
             <p class="card-text"><strong>Due Date:</strong> {{ task.due_date }}</p>
-            <a href="{% url 'task_list' %}" class="btn btn-secondary">Back to Task List</a>
+            <a href="{% url 'task_list' %}" class="btn">Back to Task List</a>
+            <a href="{% url 'edit_task' id=task.id %}" class="btn">Edit Task</a>
         </div>
     </div>
 </div>
