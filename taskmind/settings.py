@@ -119,3 +119,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# If you have other static directories or want to include app-specific directories:
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Include the "static" folder at the project root
+]
