@@ -35,6 +35,12 @@ h1 {
     border-radius: 4px;
 }
 
+.navbar-name {
+    color: #fff;
+    font-weight: bold;
+    font-size: 24px;
+}
+
 /* Button Styling */
 .btn {
     display: inline-block;
