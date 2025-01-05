@@ -44,3 +44,17 @@ def delete_task(request,id):
     task = get_object_or_404(Task,id=id)
     task.delete()
     return redirect('task_list')
+
+def mark_complete(request, id):
+    task = get_object_or_404(Task, id=id)
+    
+    # Toggle the task's status
+    if task.status == 'Completed':
+        task.status = 'Not Completed'
+    else:
+        task.status = 'Completed'
+    
+    task.save()
+    
+    # Redirect to the task details page after updating the status
+    return redirect('task_details', id=task.id)
