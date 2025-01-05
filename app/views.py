@@ -7,7 +7,12 @@ def home(request):
     return render(request, 'home.html')
 
 def task_list (request):
-    tasks = Task.objects.all()
+    search_query =  request.GET.get('search','')
+    
+    if search_query:
+        tasks = Task.objects.filter(title__icontains=search_query)
+    else:
+        tasks = Task.objects.all()
     return render(request, 'tasks.html', {'tasks': tasks})
 
 def add_task(request):
