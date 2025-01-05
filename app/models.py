@@ -18,7 +18,3 @@ class Task(models.Model):
     
     def __str__(self):
         return self.title
-    
-    # Optional: Provide a human-readable representation of the task's status
-    def get_status_display(self):
-        return dict(self.STATUS_CHOICES).get(self.status, self.status)

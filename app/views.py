@@ -48,11 +48,11 @@ def delete_task(request,id):
 def mark_complete(request, id):
     task = get_object_or_404(Task, id=id)
     
-    # Toggle the task's status
-    if task.status == 'Completed':
-        task.status = 'Not Completed'
+    # Toggle the task's status between 'Completed' and 'Not Completed'
+    if task.status == Task.COMPLETED:
+        task.status = Task.NOT_COMPLETED
     else:
-        task.status = 'Completed'
+        task.status = Task.COMPLETED
     
     task.save()
     
