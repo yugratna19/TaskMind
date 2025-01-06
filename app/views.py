@@ -9,11 +9,6 @@ from django.core.paginator import Paginator
 def home(request):
     return render(request, 'home.html')
 
-
-from django.shortcuts import render
-from django.core.paginator import Paginator
-from .models import Task
-
 def task_list(request):
     search_query = request.GET.get('search', '')
     status_filter = request.GET.get('status', '')  # Get status filter from the query parameters
