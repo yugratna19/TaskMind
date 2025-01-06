@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Task
 from .forms import TaskForm
 from django.contrib import messages
-
+from django.core.paginator import Paginator
 # Create your views here.
 
 
@@ -10,14 +10,31 @@ def home(request):
     return render(request, 'home.html')
 
 
+from django.shortcuts import render
+from django.core.paginator import Paginator
+from .models import Task
+
 def task_list(request):
     search_query = request.GET.get('search', '')
+    status_filter = request.GET.get('status', '')  # Get status filter from the query parameters
+    
+    # Filter tasks based on search query
     if search_query:
         tasks = Task.objects.filter(title__icontains=search_query)
     else:
         tasks = Task.objects.all()
-    return render(request, 'tasks.html', {'tasks': tasks})
 
+    # Apply status filter if provided
+    if status_filter:
+        tasks = tasks.filter(status=status_filter)
+
+    # Pagination logic
+    paginator = Paginator(tasks, 10)  # Show 10 tasks per page
+    page_number = request.GET.get('page')  # Get the page number from the URL
+    page_obj = paginator.get_page(page_number)
+
+    # Pass the filtered and paginated tasks to the template
+    return render(request, 'tasks.html', {'page_obj': page_obj, 'search_query': search_query, 'status_filter': status_filter})
 
 def add_task(request):
     if request.method == 'POST':
