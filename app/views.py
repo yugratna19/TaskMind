@@ -38,6 +38,8 @@ def add_task(request):
             form.save()
             messages.success(request, 'Task has been successfully added!')
             return redirect('task_list')
+        else:
+            messages.error(request, 'Error in the form. Please correct the errors and try again')
     else:
         form = TaskForm()
     return render(request, 'add_task.html', {'form': form})
@@ -51,6 +53,8 @@ def edit_task(request, id):
             form.save()
             messages.success(request, 'Task has been successfully updated!')
             return redirect('task_list')
+        else:
+            messages.error(request, 'Error in the form. Please correct the errors and try again')
     else:
         form = TaskForm(instance=task)
     return render(request, 'edit_task.html', {'form': form})
