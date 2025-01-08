@@ -36,8 +36,15 @@
                 <h3 class="task-title">{{ task.title }}</h3>
             </a>
             <p class="task-details">
-                <span class="task-due">Due: {{ task.due_date }}</span> | 
-                <span class="task-status">Status: {{ task.get_status_display }}</span>
+                <span class="task-due">Due: {{ task.due_date }}</span> |
+                <span class="task-status">
+                    <!-- Status Icon or Label -->
+                    {% if task.status == 'Completed' %}
+                        ✅ Completed
+                    {% else %}
+                        ⏳ Pending
+                    {% endif %}
+                </span>
             </p>
         </div>
     {% empty %}
