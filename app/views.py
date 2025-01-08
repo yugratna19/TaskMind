@@ -24,7 +24,7 @@ def task_list(request):
         tasks = tasks.filter(status=status_filter)
 
     # Pagination logic
-    paginator = Paginator(tasks, 10)  # Show 10 tasks per page
+    paginator = Paginator(tasks, 9)  # Show 10 tasks per page
     page_number = request.GET.get('page')  # Get the page number from the URL
     page_obj = paginator.get_page(page_number)
 
