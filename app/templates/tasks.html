@@ -30,28 +30,44 @@
 
 <!-- Task List -->
 <div class="task-container">
-    {% for task in page_obj %}
-        <div class="task-card">
-            <a href="{% url 'task_details' task.id %}" class="task-link">
-                <h3 class="task-title">{{ task.title }}</h3>
-            </a>
-            <p class="task-details">
-                <span class="task-due">Due: {{ task.due_date }}</span> |
-                <span class="task-status">
-                    <!-- Status Icon or Label -->
-                    {% if task.status == 'Completed' %}
-                        ✅ Completed
-                    {% else %}
-                        ⏳ Pending
-                    {% endif %}
-                </span>
-            </p>
-        </div>
-    {% empty %}
+    {% if page_obj %}
+        {% for task in page_obj %}
+            <div class="task-card">
+                <a href="{% url 'task_details' task.id %}" class="task-link">
+                    <h3 class="task-title">{{ task.title }}</h3>
+                </a>
+                <p class="task-details">
+                    <span class="task-due">Due: {{ task.due_date }}</span> |
+                    <span class="task-status">
+                        {% if task.status == 'Completed' %}
+                            ✅ Completed
+                        {% else %}
+                            ⏳ Pending
+                        {% endif %}
+                    </span>
+                    |
+                    <span class="task-priority" style="color:
+                        {% if task.priority == 'High' %}
+                            red;
+                        {% elif task.priority == 'Medium' %}
+                            orange;
+                        {% else %}
+                            green;
+                        {% endif %}">
+                        {{ task.priority }}
+                    </span>
+                </p>
+            </div>
+        {% empty %}
+            <div class="task-card no-tasks">
+                <p>No tasks found.</p>
+            </div>
+        {% endfor %}
+    {% else %}
         <div class="task-card no-tasks">
             <p>No tasks found.</p>
         </div>
-    {% endfor %}
+    {% endif %}
 </div>
 
 <!-- Pagination Controls -->
@@ -62,7 +78,7 @@
             <a href="?page=1{% if search_query %}&search={{ search_query }}{% endif %}{% if status_filter %}&status={{ status_filter }}{% endif %}">First</a>
             <a href="?page={{ page_obj.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if status_filter %}&status={{ status_filter }}{% endif %}">Previous</a>
         {% endif %}
-        
+
         {% if page_obj.has_next %}
             <a href="?page={{ page_obj.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if status_filter %}&status={{ status_filter }}{% endif %}">Next</a>
             <a href="?page={{ page_obj.paginator.num_pages }}{% if search_query %}&search={{ search_query }}{% endif %}{% if status_filter %}&status={{ status_filter }}{% endif %}">Last</a>
