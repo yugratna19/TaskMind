@@ -12,31 +12,33 @@
 </div>
 {% endif %}
 
-<!-- Search Bar -->
-<form method="GET" action="{% url 'task_list' %}" class="search-form">
-    <input type="text" name="search" class="search-input" placeholder="Search tasks..." value="{{ search_query }}">
-    <button type="submit" class="btn search-btn">Search</button>
-</form>
+<!-- Combined Filter and Sort Form -->
+<form method="GET" action="{% url 'task_list' %}" class="filter-sort-form">
+    <div>
+        <!-- Search Bar -->
+        <input type="text" name="search" class="search-input" placeholder="Search tasks..." value="{{ search_query }}">
+    </div>
 
-<!-- Filter by Status -->
-<form method="GET" action="{% url 'task_list' %}" class="filter-form">
-    <label for="status">Filter by Status:</label>
-    <select name="status" id="status" onchange="this.form.submit()">
-        <option value="">All</option>
-        <option value="Not Completed" {% if status_filter == 'Not Completed' %}selected{% endif %}>Not Completed</option>
-        <option value="Completed" {% if status_filter == 'Completed' %}selected{% endif %}>Completed</option>
-    </select>
-</form>
+    <div>
+        <!-- Filter by Status -->
+        <label for="status">Filter by Status:</label>
+        <select name="status" id="status" onchange="this.form.submit()">
+            <option value="">All</option>
+            <option value="Not Completed" {% if status_filter == 'Not Completed' %}selected{% endif %}>Not Completed</option>
+            <option value="Completed" {% if status_filter == 'Completed' %}selected{% endif %}>Completed</option>
+        </select>
+    </div>
 
-<!-- Sort Options -->
-<form method="GET" action="{% url 'task_list' %}" class="sort-form">
-    <label for="sort_by">Sort by:</label>
-    <select name="sort_by" id="sort_by" onchange="this.form.submit()">
-        <option value="">None</option>
-        <option value="priority" {% if sort_by == 'priority' %}selected{% endif %}>Priority</option>
-        <option value="due_date" {% if sort_by == 'due_date' %}selected{% endif %}>Due Date</option>
-        <option value="status" {% if sort_by == 'status' %}selected{% endif %}>Status</option>
-    </select>
+    <div>
+        <!-- Sort by Options -->
+        <label for="sort_by">Sort by:</label>
+        <select name="sort_by" id="sort_by" onchange="this.form.submit()">
+            <option value="">None</option>
+            <option value="priority" {% if sort_by == 'priority' %}selected{% endif %}>Priority</option>
+            <option value="due_date" {% if sort_by == 'due_date' %}selected{% endif %}>Due Date</option>
+            <option value="status" {% if sort_by == 'status' %}selected{% endif %}>Status</option>
+        </select>
+    </div>
 </form>
 
 <!-- Task List -->
