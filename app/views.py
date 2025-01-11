@@ -9,14 +9,19 @@ from django.core.paginator import Paginator
 def home(request):
     return render(request, 'home.html')
 
+
+from django.db.models import Q
+
 def task_list(request):
-    search_query = request.GET.get('search', '') # Get searching option from the query parameters
+    search_query = request.GET.get('search', '')  # Get search query from the request
     status_filter = request.GET.get('status', '')  # Get status filter from the query parameters
-    sort_by = request.GET.get('sort_by', '') # Get sorting option from query parameters
+    sort_by = request.GET.get('sort_by', '')  # Get sorting option from query parameters
     
-    # Filter tasks based on search query
+    # Filter tasks based on search query for both title and description
     if search_query:
-        tasks = Task.objects.filter(title__icontains=search_query)
+        tasks = Task.objects.filter(
+            Q(title__icontains=search_query) | Q(description__icontains=search_query)
+        )
     else:
         tasks = Task.objects.all()
 
@@ -33,7 +38,7 @@ def task_list(request):
         tasks = tasks.order_by('status')  # Sort by status
         
     # Pagination logic
-    paginator = Paginator(tasks, 9)  # Show 10 tasks per page
+    paginator = Paginator(tasks, 9)  # Show 9 tasks per page
     page_number = request.GET.get('page')  # Get the page number from the URL
     page_obj = paginator.get_page(page_number)
 
@@ -48,7 +53,8 @@ def add_task(request):
             messages.success(request, 'Task has been successfully added!')
             return redirect('task_list')
         else:
-            messages.error(request, 'Error in the form. Please correct the errors and try again')
+            messages.error(
+                request, 'Error in the form. Please correct the errors and try again')
     else:
         form = TaskForm()
     return render(request, 'add_task.html', {'form': form})
@@ -63,7 +69,8 @@ def edit_task(request, id):
             messages.success(request, 'Task has been successfully updated!')
             return redirect('task_list')
         else:
-            messages.error(request, 'Error in the form. Please correct the errors and try again')
+            messages.error(
+                request, 'Error in the form. Please correct the errors and try again')
     else:
         form = TaskForm(instance=task)
     return render(request, 'edit_task.html', {'form': form})
@@ -91,4 +98,4 @@ def mark_complete(request, id):
     task.save()
     messages.success(request, f'Task {id} status has been updated!')
     # Redirect to the task details page after updating the status
-    return redirect('task_list' )
+    return redirect('task_list')
