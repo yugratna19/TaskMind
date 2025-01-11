@@ -10,8 +10,9 @@ def home(request):
     return render(request, 'home.html')
 
 def task_list(request):
-    search_query = request.GET.get('search', '')
+    search_query = request.GET.get('search', '') # Get searching option from the query parameters
     status_filter = request.GET.get('status', '')  # Get status filter from the query parameters
+    sort_by = request.GET.get('sort_by', '') # Get sorting option from query parameters
     
     # Filter tasks based on search query
     if search_query:
@@ -23,6 +24,14 @@ def task_list(request):
     if status_filter:
         tasks = tasks.filter(status=status_filter)
 
+    # Sorting logic based on user selection
+    if sort_by == 'priority':
+        tasks = tasks.order_by('priority')  # Sort by priority
+    elif sort_by == 'due_date':
+        tasks = tasks.order_by('due_date')  # Sort by due date
+    elif sort_by == 'status':
+        tasks = tasks.order_by('status')  # Sort by status
+        
     # Pagination logic
     paginator = Paginator(tasks, 9)  # Show 10 tasks per page
     page_number = request.GET.get('page')  # Get the page number from the URL

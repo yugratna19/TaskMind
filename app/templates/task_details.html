@@ -8,7 +8,16 @@
             <h5 class="card-title">{{ task.title }}</h5>
             <p class="card-text"><strong>Description:</strong> {{ task.description }}</p>
             <p class="card-text"><strong>Due Date:</strong> {{ task.due_date }}</p>
-            <p class="card-text"><strong>Status:</strong> {{ task.get_status_display }}</p> 
+            <p class="card-text"><strong>Status:</strong> {{ task.get_status_display }}</p>
+
+            <!-- Display Priority with color -->
+            <p class="card-text"><strong>Priority:</strong> 
+                <span class="priority {% if task.priority == 'High' %}high-priority
+                                        {% elif task.priority == 'Medium' %}medium-priority
+                                        {% elif task.priority == 'Low' %}low-priority{% endif %}">
+                    {{ task.priority }}
+                </span>
+            </p>
 
             <!-- Mark as Complete / Incomplete form -->
             <form method="POST" action="{% url 'mark_complete' task.id %}">
