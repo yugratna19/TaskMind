@@ -3,14 +3,11 @@ from .models import Task
 from .forms import TaskForm
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.db.models import Q, Case, When, Value, IntegerField
+
 # Create your views here.
-
-
 def home(request):
     return render(request, 'home.html')
-
-
-from django.db.models import Q
 
 def task_list(request):
     search_query = request.GET.get('search', '')  # Get search query from the request
@@ -31,19 +28,35 @@ def task_list(request):
 
     # Sorting logic based on user selection
     if sort_by == 'priority':
-        tasks = tasks.order_by('priority')  # Sort by priority
+        # Correct mapping of priority to numeric values: "High" -> 1, "Medium" -> 2, "Low" -> 3
+        tasks = tasks.annotate(
+            priority_order=Case(
+                When(priority='High', then=Value(1)),
+                When(priority='Medium', then=Value(2)),
+                When(priority='Low', then=Value(3)),
+                default=Value(4),  # Default case for unexpected values (if any)
+                output_field=IntegerField()
+            )
+        ).order_by('priority_order', 'title')  # Sort first by priority, then by title alphabetically
     elif sort_by == 'due_date':
-        tasks = tasks.order_by('due_date')  # Sort by due date
+        tasks = tasks.order_by('due_date', 'title')  # Sort by due date, then alphabetically by title
     elif sort_by == 'status':
-        tasks = tasks.order_by('status')  # Sort by status
-        
+        tasks = tasks.order_by('status', 'title')  # Sort by status, then alphabetically by title
+    else:
+        tasks = tasks.order_by('title')  # Default: Sort alphabetically by title
+
     # Pagination logic
     paginator = Paginator(tasks, 9)  # Show 9 tasks per page
     page_number = request.GET.get('page')  # Get the page number from the URL
     page_obj = paginator.get_page(page_number)
 
     # Pass the filtered and paginated tasks to the template
-    return render(request, 'tasks.html', {'page_obj': page_obj, 'search_query': search_query, 'status_filter': status_filter})
+    return render(request, 'tasks.html', {
+        'page_obj': page_obj, 
+        'search_query': search_query, 
+        'status_filter': status_filter,
+        'sort_by': sort_by
+    })
 
 def add_task(request):
     if request.method == 'POST':
