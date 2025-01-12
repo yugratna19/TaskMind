@@ -10,8 +10,8 @@ Thumbs.db
 # Virtual Environment
 venv/
 env/
+rasa_env/
 .myenv/
-.rasa_env/
 
 # Django
 db.sqlite3
