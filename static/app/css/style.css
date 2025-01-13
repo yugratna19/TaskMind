@@ -216,6 +216,90 @@ textarea {
     color: #000; /* Black text */
 }
 
+/* Chatbot Icon */
+#chatbot-icon {
+    position: fixed;
+    bottom: 90px; /* Increased from 20px to 90px to sit above the footer */
+    right: 20px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Added to ensure it's above the footer */
+}
+
+/* Chatbot Window */
+#chatbot-window {
+    position: fixed;
+    bottom: 160px; /* Adjusted to keep chat window above the footer */
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 1000; /* Ensure chat window is on top */
+}
+
+
+#chatbot-header {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#chatbot-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+#chatbot-input {
+    width: 75%;
+    padding: 10px;
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
+#chatbot-window button {
+    width: 25%;
+    padding: 10px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+.user-message {
+    text-align: right;
+    background-color: #DCF8C6;
+    padding: 8px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.bot-message {
+    text-align: left;
+    background-color: #F1F0F0;
+    padding: 8px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar a {

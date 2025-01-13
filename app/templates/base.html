@@ -14,6 +14,7 @@
 
 </head>
 <body>
+    <!-- Naviagtion -->
     <nav class="navbar">
         <div class="container">
             <div class="navbar-name">TaskMind</div>
@@ -24,12 +25,34 @@
             </div>
         </div>
     </nav>
+    <!--Main content-->
     <div class="container mt-4">
         {% block content %}
         {% endblock %}
     </div>
+
+     <!-- Chatbot Icon -->
+     <div id="chatbot-icon" onclick="toggleChatbot()">
+        💬
+    </div>
+
+    <!-- Chat Window -->
+    <div id="chatbot-window" style="display: none;">
+        <div id="chatbot-header">
+            <span>TaskMind Chatbot</span>
+            <button onclick="toggleChatbot()">✖</button>
+        </div>
+        <div id="chatbot-messages"></div>
+        <input type="text" id="chatbot-input" placeholder="Type a message..." onkeypress="handleKeyPress(event)">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <!-- Footer section-->
     <footer>
         <p>&copy; 2025 TaskMind. All Rights Reserved.</p>
     </footer>
+    
+    <!-- JS Script -->
+    <script src="{% static 'app/js/chatbot.js' %}"></script>
 </body>
 </html>
