@@ -33,10 +33,10 @@ responses:
   - text: "I am a bot, powered by Rasa."
 
   utter_add_task:
-   - text: "Sure! What task would you like to add?"
+  - text: "Sure! What task would you like to add?"
 
-   utter_update_task:
-    - text: "Which task would you like to update?"
+  utter_update_task:
+  - text: "Which task would you like to update?"
 
   utter_recommend_task:
     - text: "Let me check your tasks and suggest something..."
