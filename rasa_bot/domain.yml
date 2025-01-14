@@ -8,6 +8,9 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - add_task
+  - update_task
+  - recommend_task
 
 responses:
   utter_greet:
@@ -28,6 +31,15 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_add_task:
+   - text: "Sure! What task would you like to add?"
+
+   utter_update_task:
+    - text: "Which task would you like to update?"
+
+  utter_recommend_task:
+    - text: "Let me check your tasks and suggest something..."
 
 session_config:
   session_expiration_time: 60
