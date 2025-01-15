@@ -1,0 +1,50 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: Greet the user
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: Add a task
+  steps:
+  - intent: add_task
+  - action: action_add_task
+
+- story: Update a task
+  steps:
+  - intent: update_task
+  - action: utter_update_task
+
+- story: Recommend tasks
+  steps:
+  - intent: recommend_task
+  - action: action_recommend_task

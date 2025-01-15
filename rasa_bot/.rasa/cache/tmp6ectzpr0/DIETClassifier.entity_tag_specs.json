@@ -1,0 +1,36 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-due_date",
+      "2": "I-due_date",
+      "3": "L-due_date",
+      "4": "U-due_date",
+      "5": "B-priority",
+      "6": "I-priority",
+      "7": "L-priority",
+      "8": "U-priority",
+      "9": "B-title",
+      "10": "I-title",
+      "11": "L-title",
+      "12": "U-title",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-due_date": 1,
+      "I-due_date": 2,
+      "L-due_date": 3,
+      "U-due_date": 4,
+      "B-priority": 5,
+      "I-priority": 6,
+      "L-priority": 7,
+      "U-priority": 8,
+      "B-title": 9,
+      "I-title": 10,
+      "L-title": 11,
+      "U-title": 12,
+      "O": 0
+    },
+    "num_tags": 13
+  }
+]
