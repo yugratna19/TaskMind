@@ -27,7 +27,7 @@ db.sqlite3
 # MongoDB
 *.lock
 *.ldb
-data/
+
 
 # AI/ML Models and Outputs
 *.h5
