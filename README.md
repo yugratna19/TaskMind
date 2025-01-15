@@ -2,7 +2,7 @@
 
 TaskMind is a Django-based task management web application designed to help users efficiently manage their tasks with features like task creation, updating, deletion, sorting, searching, and prioritization. The project is structured with Django best practices, ensuring scalability and maintainability.
 
-## Features
+## 🚀 Features
 
 - **Task Management**: Add, edit, delete, and mark tasks as completed.
 - **Search & Sort**: Search tasks and sort them by due date, priority, or status.
@@ -10,7 +10,7 @@ TaskMind is a Django-based task management web application designed to help user
 - **User Interface**: Responsive and intuitive UI with Bootstrap integration.
 - **Future Integration**: A chatbot powered by Rasa will soon be integrated to handle task operations via natural language commands.
 
-## Project Structure
+## 📂 Project Structure
 
 This repository follows a well-organized structure for development and testing.
 
@@ -45,7 +45,7 @@ TaskMind/
 └── README.md
 ```
 
-## Installation
+## ⚙️ Installation
 
 Follow these steps to set up and run TaskMind locally.
 
@@ -84,7 +84,7 @@ Follow these steps to set up and run TaskMind locally.
 - Access the App: Open your browser and visit http://127.0.0.1:8000/
 
 
-### Chatbot Integration (In Progress)
+### 🤖 Chatbot Integration (In Progress)
 
 The project will soon include a Rasa-powered chatbot for task management, offering features such as:
 
