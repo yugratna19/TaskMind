@@ -16,7 +16,7 @@ function sendMessage() {
 
     // Simulate bot response (this will later be connected to Rasa)
     setTimeout(() => {
-        displayMessage("I'm processing your request...", 'bot');
+        displayMessage("Coming soon...", 'bot');
     }, 500);
 }
 
